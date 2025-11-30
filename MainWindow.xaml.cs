@@ -3,6 +3,8 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using MyApp.Features.Auth;
 using MyApp.Features.Dashboard;
+using MyApp.Features.FamilyList;
+using MyApp.Features.NewFamily;
 using MyApp.Features.Settings;
 
 namespace MyApp
@@ -75,13 +77,22 @@ namespace MyApp
 
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            switch (args.InvokedItem as string)
+            var item = args.InvokedItemContainer as NavigationViewItem;
+            if (item == null) return;
+
+            switch (item.Tag as string)
             {
                 case "Dashboard":
                     ContentFrame.Navigate(typeof(DashboardPage));
                     break;
                 case "Settings":
                     ContentFrame.Navigate(typeof(SettingsPage));
+                    break;
+                case "FamilyList":
+                    ContentFrame.Navigate(typeof(FamilyListPage));
+                    break;
+                case "NewFamily":
+                    ContentFrame.Navigate(typeof(NewFamilyPage));
                     break;
                 case "Logout":
                     ContentFrame.BackStack.Clear();

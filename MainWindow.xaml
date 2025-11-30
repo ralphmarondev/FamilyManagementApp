@@ -59,20 +59,44 @@
             Visibility="Collapsed"
             ItemInvoked="NavView_ItemInvoked">
 
+
             <NavigationView.MenuItems>
+                <!-- Dashboard -->
                 <NavigationViewItem Content="Dashboard" Tag="Dashboard">
                     <NavigationViewItem.Icon>
                         <SymbolIcon Symbol="Home"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                
+
+                <!-- Families with sub-items -->
+                <NavigationViewItem Content="Families" Tag="Families">
+                    <NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="People"/>
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.MenuItems>
+                        <!-- Sub-menu items -->
+                        <NavigationViewItem Content="Family List" Tag="FamilyList">
+                            <NavigationViewItem.Icon>
+                                <SymbolIcon Symbol="List"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <NavigationViewItem Content="New Family" Tag="NewFamily">
+                            <NavigationViewItem.Icon>
+                                <SymbolIcon Symbol="Add"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+
+                <!-- Settings -->
                 <NavigationViewItem Content="Settings" Tag="Settings">
                     <NavigationViewItem.Icon>
                         <SymbolIcon Symbol="Setting"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
-            
+
             <!-- Footer items (bottom of nav) -->
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem Content="Logout" Tag="Logout">

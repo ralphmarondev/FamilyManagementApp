@@ -5,6 +5,12 @@
     <None Update="App.xaml">
       <SubType>Designer</SubType>
     </None>
+    <Page Update="Features\NewFamily\NewFamilyPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Features\FamilyList\FamilyListPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Features\Settings\SettingsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
