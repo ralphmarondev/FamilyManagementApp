@@ -1,41 +1,25 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MyApp.Core.Models;
-using System;
+using MyApp.Core.Repository;
 using System.Collections.ObjectModel;
 
 namespace MyApp.Features.FamilyList
 {
     public partial class FamilyListViewModel : ObservableObject
     {
+        private readonly FamilyRepository _repo;
+
         [ObservableProperty]
         private ObservableCollection<Family> _families = new();
 
         public FamilyListViewModel()
         {
-            // Load from repository
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-            _families.Add(new Family { Id = 1, Name = "Eda Family", CreateDate = DateTime.Now, UpdateDate = DateTime.Now });
-        }
+            _repo = new FamilyRepository();
 
+            foreach (var family in _repo.GetFamilies())
+            {
+                Families.Add(family);
+            }
+        }
     }
 }

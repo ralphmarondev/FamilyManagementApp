@@ -1,18 +1,18 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MyApp.Core.Models;
+using MyApp.Core.Repository;
 using System;
 
 namespace MyApp.Features.NewFamily
 {
     public partial class NewFamilyViewModel : ObservableObject
     {
-        //private readonly FamilyRepository _repo;
+        private readonly FamilyRepository _repo;
 
         public NewFamilyViewModel()
         {
-            // TODO: inject or configure connection string properly
-            //_repo = new FamilyRepository("Data Source=church.db");
+            _repo = new FamilyRepository();
         }
 
         // Bindable properties
@@ -40,7 +40,7 @@ namespace MyApp.Features.NewFamily
                 IsDeleted = false
             };
 
-            //_repo.AddFamily(family);
+            _repo.AddFamily(family);
 
             //// Reset form or show feedback
             Name = string.Empty;
