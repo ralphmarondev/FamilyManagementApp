@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="MyApp.Features.NewFamily.NewFamilyPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -8,7 +7,47 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
-        <TextBlock>New Family Page</TextBlock>
+    <Page.DataContext>
+        <local:NewFamilyViewModel />
+    </Page.DataContext>
+
+    <!-- Centered card layout -->
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel
+            Width="400"
+            Spacing="16"
+            Padding="24"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+            CornerRadius="8">
+
+            <!-- Title -->
+            <TextBlock Text="Create New Family"
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="Fill out the details below"
+                       FontSize="14"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,12"/>
+
+            <!-- Family Name -->
+            <TextBox Header="Family Name"
+                     Text="{Binding Name, Mode=TwoWay}"
+                     PlaceholderText="Enter family name"
+                     Margin="0,0,0,8"/>
+
+            <!-- Action Buttons -->
+            <StackPanel Orientation="Horizontal" Spacing="12" HorizontalAlignment="Right">
+                <Button Content="Cancel"
+                        Style="{StaticResource DefaultButtonStyle}"
+                        Command="{Binding CancelCommand}"/>
+                <Button Content="Create"
+                        Style="{StaticResource AccentButtonStyle}"
+                        Command="{Binding CreateFamilyCommand}"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

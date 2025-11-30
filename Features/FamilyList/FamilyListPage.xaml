@@ -1,14 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="MyApp.Features.FamilyList.FamilyListPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MyApp.Features.FamilyList"
+    xmlns:model="using:MyApp.Core.Models"
+    xmlns:winui="using:Microsoft.UI.Xaml.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
-        <TextBlock>Family list page</TextBlock>
+    <Page.DataContext>
+        <local:FamilyListViewModel />
+    </Page.DataContext>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer Padding="20">
+            <ItemsRepeater ItemsSource="{Binding Families}">
+                <ItemsRepeater.Layout>
+                    <winui:LinedFlowLayout />
+                </ItemsRepeater.Layout>
+
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate x:DataType="model:Family">
+                        <StackPanel Width="250"
+                        Spacing="8"
+                        Padding="16"
+                        Margin="8"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        CornerRadius="8">
+
+                            <TextBlock Text="{x:Bind Name}" FontSize="18" FontWeight="SemiBold"/>
+                            <TextBlock Text="{x:Bind CreateDate, Mode=OneWay}" FontSize="12"
+                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                            <TextBlock Text="{x:Bind UpdateDate, Mode=OneWay}" FontSize="12"
+                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                            <TextBlock Text="{x:Bind IsDeleted, Mode=OneWay}" FontSize="12"
+                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+        </ScrollViewer>
     </Grid>
 </Page>
